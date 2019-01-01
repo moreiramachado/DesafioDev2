@@ -1,0 +1,27 @@
+﻿@model DadosWhois.Models.DadosWhois
+@{var status = Model.Status == null ? "Disponivel" : "Registrado";}
+<h1>Resultados da busca</h1>
+<table class="table table-striped">
+    <tr>
+        <td>Nome do Dominio:</td>
+        <td>Criado em:</td>
+        <td>Alterado em:</td>
+        <td>Registrado:</td>
+        <td>Expira em:</td>
+        <td>DNS'S:</td>
+    </tr>
+    <tr>
+        <td>@Model.Dominio </td>
+        <td>@Model.DataCriacao </td>
+        <td>@Model.DataAlteracao </td>
+        <td>@status</td>
+        <td>@Model.DataExpiracao </td>
+        <td>
+            @foreach (var nameServer in Model.NameServer)
+            {<ul><li>@nameServer</li></ul>}
+
+
+        </td>
+
+    </tr>
+</table>
